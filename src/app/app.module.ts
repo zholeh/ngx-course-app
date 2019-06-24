@@ -10,7 +10,14 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule
   ],
+  exports: [],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+// Module/Directive/Pipe/Service
+// NgModule => es6 module
+// declarations => let/const  // directive, pipe
+// imports = import;
+// exports = export;  directive, pipe , module
