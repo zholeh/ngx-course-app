@@ -1,5 +1,4 @@
 #### CLI, NgModules, Component, Template syntax, binding
-
 0) CLI structure 
    - `(done)`
 1) NgModel, Components 
@@ -15,10 +14,11 @@
    - @Input(), @Output() for drawer `(done)`
    - Life hooks `(done)`
    - sanitizer
+3) Augree/debug   
 
 #### Directives and pipes
 3) NgFor and trackBy and other props `(done)`
-3) Special directives ng-template, ng-container, ngTemplateOutlet
+3) Special directives 
   - ng-template `(done)`
   - ng-container
   - ngTemplateOutlet
@@ -39,5 +39,40 @@
     - Modal Service    
     - ng-component vs componentResolveFactory
 
-##### Router component
+#### Router module
+   - guards 
+   - static data
+   - resolve and params
+   - lazy loading
+
+#### Forms module 
+   - login / signup template driven form
+   - sync/async validators directives
+   - profile edit reactive forms
+   - address dynamic form (FormArray)
+   - sync/async validators
+   - custom FormControl
+
+#### Redux architecture approach
+   - store dev tools
+   - effects 
+   - cart entities 
+
+#### Unit Testing 
+   - Testing pipe
+   - Testing directives
+   - Testing component
+   - Testing service
+   - coverage
+
+#### e2e Testing
+   - from page object to widget
+
+
+#### ChangeDetection
+   
+
+#### Build 
+  - custom webpack  (add compression and defer for scripts)
+  - ivy renderer 
 
