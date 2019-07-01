@@ -2,5 +2,23 @@
 
 </app-header>
 <app-sidebar (setSidenavControl)="setSidenav($event)">
-  <div>Content 1</div>
+
+  <mat-form-field class="products-search">
+    <input matInput placeholder="Search products" (input)="searchTerm = $event.target.value">
+  </mat-form-field>
+  <mat-checkbox (change)="toggleOnlyFavorites($event)">Show favorites only</mat-checkbox>
+
+
+  <mat-grid-list cols="4" [rowHeight]="400" *ngIf="products$ | async as products; else load">
+    <mat-grid-tile *ngFor="let product of products | productsFilter: searchTerm: onlyFavorites;trackBy: trackByFn ">
+      <app-product-card [product]="product"></app-product-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <ng-template #load>
+    <div class="loader-container">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>
+
 </app-sidebar>

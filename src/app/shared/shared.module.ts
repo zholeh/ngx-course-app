@@ -1,5 +1,13 @@
 import { NgModule } from '@angular/core';
-import { MatButtonModule, MatIconModule, MatListModule, MatSidenavModule, MatToolbarModule } from '@angular/material';
+import {
+  MatBadgeModule,
+  MatButtonModule,
+  MatCardModule, MatCheckboxModule, MatFormFieldModule, MatGridListModule,
+  MatIconModule, MatInputModule,
+  MatListModule, MatMenuModule, MatProgressSpinnerModule,
+  MatSidenavModule,
+  MatToolbarModule
+} from '@angular/material';
 
 @NgModule({
   declarations: [],
@@ -8,14 +16,30 @@ import { MatButtonModule, MatIconModule, MatListModule, MatSidenavModule, MatToo
     MatIconModule,
     MatButtonModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatCardModule,
+    MatGridListModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatProgressSpinnerModule,
+    MatMenuModule,
+    MatBadgeModule,
+    MatCheckboxModule
   ],
   exports: [
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatCardModule,
+    MatGridListModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatProgressSpinnerModule,
+    MatMenuModule,
+    MatBadgeModule,
+    MatCheckboxModule
   ]
 })
 export class SharedModule {
