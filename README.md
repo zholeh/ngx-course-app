@@ -8,16 +8,19 @@
    - template ref `(done)`
 1) SideName component 
     - projection (ng-content)  `(done)`
-    - @ViewChild @ContentChild  for projection `(done)`
+    - @ViewChild @ContentChild ViewContainerRef for projection +  ngTemplateOutlet ng-container`(done)` 
 2) Header component, 
    - style encapsulation @Input(), @Output() for drawer `(done)`
    - @Input(), @Output() for drawer `(done)`
    - Life hooks `(done)`
    - sanitizer
-3) Augree/debug   
+3) Debug
+    - Augree
+    - /debuggerElement   
 
 #### Directives and pipes
 3) NgFor and trackBy and other props `(done)`
+3) NgClass `(done)`
 3) Special directives 
   - ng-template `(done)`
   - ng-container
@@ -37,7 +40,7 @@
     - interceptor
 4) Modal component
     - Modal Service    
-    - ng-component vs componentResolveFactory
+    - ng-component vs componentResolveFactory + ViewContainerRef
 
 #### Router module
    - guards 

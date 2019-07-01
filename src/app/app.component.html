@@ -9,9 +9,9 @@
   <mat-checkbox (change)="toggleOnlyFavorites($event)">Show favorites only</mat-checkbox>
 
 
-  <mat-grid-list cols="4" [rowHeight]="400" *ngIf="products$ | async as products; else load">
-    <mat-grid-tile *ngFor="let product of products | productsFilter: searchTerm: onlyFavorites;trackBy: trackByFn ">
-      <app-product-card [product]="product"></app-product-card>
+  <mat-grid-list cols="4" [rowHeight]="500" *ngIf="products$ | async as products; else load">
+    <mat-grid-tile *ngFor="let product of products | productsFilter: searchTerm: onlyFavorites; odd as isOdd ;trackBy: trackByFn ">
+      <app-product-card [product]="product" [isOdd]="isOdd"></app-product-card>
     </mat-grid-tile>
   </mat-grid-list>
 

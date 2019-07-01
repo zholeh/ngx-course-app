@@ -11,6 +11,9 @@ export class ProductCardComponent implements OnInit {
   @Input()
   public product: IProduct;
 
+  @Input()
+  public isOdd: boolean;
+
   constructor() {
   }
 
