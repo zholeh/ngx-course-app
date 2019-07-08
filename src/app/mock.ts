@@ -2,6 +2,7 @@ import { of } from 'rxjs/internal/observable/of';
 import { delay } from 'rxjs/operators';
 
 export interface IProduct {
+  _id: number;
   title: string;
   img: string;
   price: number;
