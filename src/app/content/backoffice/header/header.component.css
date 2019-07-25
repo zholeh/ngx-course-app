@@ -3,5 +3,8 @@
 }
 
 .cart {
-  min-width: 500px;
+  position: relative;
+}
+.closed {
+  display: none;
 }

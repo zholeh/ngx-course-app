@@ -13,6 +13,7 @@ import { InterceptorService } from '@shared/services/interceptor.service';
 import { BASE_URL_TOKEN } from '../config';
 import { environment } from '@env/environment';
 import { CommonModule } from '@angular/common';
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 @NgModule({
   declarations: [],
@@ -48,7 +49,8 @@ import { CommonModule } from '@angular/common';
     MatMenuModule,
     MatBadgeModule,
     MatCheckboxModule,
-    HttpClientModule
+    HttpClientModule,
+    FlexLayoutModule
   ],
   providers: [
     {

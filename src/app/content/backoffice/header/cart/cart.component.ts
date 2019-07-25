@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import {
@@ -13,6 +13,7 @@ import {
   IncrementProductInCart,
   RemoveProductFromCart,
 } from '../../../../store/actions/cart.actions';
+import { IProduct } from "../../../../store/reducers/products.reducer";
 
 @Component({
   selector: 'app-cart',
@@ -25,7 +26,9 @@ export class CartComponent implements OnInit {
   public totalPrice$!: Observable<number>;
   public totalCount$!: Observable<number>;
 
-  public constructor(private store: Store<IStore>) {}
+
+  public constructor(private store: Store<IStore>) {
+  }
 
   public ngOnInit(): void {
     this.products$ = this.store.select(productsWithBonuses);
@@ -44,5 +47,8 @@ export class CartComponent implements OnInit {
 
   public decrementProduct(product: ICartProduct): void {
     this.store.dispatch(new DecrementProductInCart(product));
+  }
+  public trackByFn(index: number, item: IProduct): number {
+    return item._id;
   }
 }

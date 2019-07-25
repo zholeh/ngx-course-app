@@ -19,7 +19,7 @@ export class InterceptorService implements HttpInterceptor {
     const headers: HttpHeaders = req.headers
       .append('Content-Type', 'application/json')
       // tslint:disable-next-line:max-line-length
-      .append('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN0cmluZyIsImlhdCI6MTU2NDA2NzI5Nn0.Lbt6gPJkYV5IWRyh67TjP6-Z8CquNvP04uVyAHEl82g');
+      .append('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imlnb3IiLCJpYXQiOjE1NjQwNjY3MDN9.qffbo3vf28MzaKcRT6flxhP-uFMShK81xBQQJQKyJsM');
     const jsonReq: HttpRequest<T> = req.clone({
       headers,
       url: `${this._baseUrl}${req.url}`,

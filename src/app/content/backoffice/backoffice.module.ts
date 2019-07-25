@@ -22,7 +22,8 @@ import { ProductComponent } from './header/cart/product/product.component';
     CartComponent,
     ProductComponent,
   ],
-  imports: [SharedModule, BackoffficeRoutingModule]
+  imports: [SharedModule, BackoffficeRoutingModule],
+  entryComponents: [CartComponent]
 })
 export class BackofficeModule {
 }

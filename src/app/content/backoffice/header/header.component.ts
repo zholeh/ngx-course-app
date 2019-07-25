@@ -1,5 +1,5 @@
 import {
-  Component,
+  Component, HostListener,
   Input, OnInit,
 } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -14,7 +14,7 @@ import { IStore } from '../../../store';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent  implements OnInit {
+export class HeaderComponent implements OnInit {
 
   @Input()
   public title: string;
@@ -26,15 +26,30 @@ export class HeaderComponent  implements OnInit {
 
   public rates = [{value: 1, currency: 'USD'}, {value: 10, currency: 'EUR'}, {value: 14, currency: 'RUB'}];
   public totalCount$!: Observable<number>;
+  public isOpen: boolean = false;
+
   public constructor(
     private sanitizer: DomSanitizer,
     private store: Store<IStore>
   ) {
   }
 
-public ngOnInit(): void {
-  this.totalCount$ = this.store.select(trueProductsCount);
-}
+
+  @HostListener('window:click', ['$event'])
+  public handleClick(e): void {
+    const isInCart: boolean | null = e.target.closest('.cart')
+      // || e.target.matches('.remove')
+      // || e.target.matches('.decrement')
+      // || e.target.matches('.increment');
+    if (isInCart) {
+      return;
+    }
+    this.isOpen = false;
+  }
+
+  public ngOnInit(): void {
+    this.totalCount$ = this.store.select(trueProductsCount);
+  }
 
   public toggleSidenav(): void {
     this.drawer.toggle();

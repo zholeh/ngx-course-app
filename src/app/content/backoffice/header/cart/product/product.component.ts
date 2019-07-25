@@ -36,4 +36,8 @@ export class ProductComponent {
     this.decrement.emit(product);
   }
 
+  public round(price: number): number {
+    return Math.round(price);
+  }
+
 }
