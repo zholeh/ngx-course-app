@@ -7,7 +7,8 @@ import { ExchangeRatesDirective } from './header/exchange-rates/exchange-rates.d
 import { ExchangeRatesComponent } from './header/exchange-rates/exchange-rates.component';
 import { HiddenDirective } from './header/exchange-rates/hidden.directive';
 import { BackoffficeRoutingModule } from './backoffice-routing.module';
-import { ProductResolveService } from "./content/products/one-product/product-resolve.service";
+import { CartComponent } from './header/cart/cart.component';
+import { ProductComponent } from './header/cart/product/product.component';
 
 
 @NgModule({
@@ -18,6 +19,8 @@ import { ProductResolveService } from "./content/products/one-product/product-re
     ExchangeRatesDirective,
     ExchangeRatesComponent,
     HiddenDirective,
+    CartComponent,
+    ProductComponent,
   ],
   imports: [SharedModule, BackoffficeRoutingModule]
 })

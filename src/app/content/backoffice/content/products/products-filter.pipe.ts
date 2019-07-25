@@ -8,7 +8,6 @@ import { IProduct } from '../../../../mock';
 export class ProductsFilterPipe implements PipeTransform {
 
   public transform(products: IProduct[], searchTerm: string, onlyFavorites: boolean = false): IProduct[] {
-    console.log('init', onlyFavorites)
     const result = products;
     if (onlyFavorites) {
       return result.filter((product: IProduct) => product.isFavorite === onlyFavorites);

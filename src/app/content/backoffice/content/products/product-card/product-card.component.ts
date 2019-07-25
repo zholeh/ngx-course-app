@@ -1,7 +1,10 @@
 import { Component, ComponentFactoryResolver, Injector, Input } from '@angular/core';
-import { IProduct } from '../../../../../mock';
 import { CardConfirmModalComponent } from './card-confirm-modal/card-confirm-modal.component';
 import { ModalService } from "@modal/modal.service";
+import { AddProductToCart } from '../../../../../store/actions/cart.actions';
+import { Store } from '@ngrx/store';
+import { IStore } from '../../../../../store';
+import { IProduct } from '../../../../../store/reducers/products.reducer';
 
 @Component({
   selector: 'app-product-card',
@@ -20,6 +23,7 @@ export class ProductCardComponent {
     private _modalService: ModalService,
     private _componentFactoryResolver: ComponentFactoryResolver,
     private _injector: Injector,
+    private store: Store<IStore>
   ) {
 
   }
@@ -33,11 +37,11 @@ export class ProductCardComponent {
       context: {
         product: {...product},
         save: () => {
+          this.store.dispatch(new AddProductToCart(product));
           this._modalService.close();
         },
 
         close: () => {
-          console.log('asdasd');
           this._modalService.close();
         }
       },

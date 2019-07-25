@@ -68,10 +68,7 @@
       true,
       20
     ],
-    "max-classes-per-file": [
-      true,
-      1
-    ],
+    "max-classes-per-file": false,
     "max-file-line-count": [
       true,
       400

@@ -3,9 +3,16 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ModalModule } from './modal/modal.module';
+import { ModalModule } from '@modal/modal.module';
 import { AppRoutingModule } from './app-routing.module';
 import { PreloadService } from './preload.service';
+import { reducers } from './store';
+import { StoreModule } from '@ngrx/store';
+import { environment } from '@env/environment';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { ProductsEffects } from './store/effects/products.effects';
+import { EffectsModule } from '@ngrx/effects';
+import { ProductsService } from './content/backoffice/content/products/products.service';
 
 @NgModule({
   declarations: [
@@ -16,15 +23,12 @@ import { PreloadService } from './preload.service';
     BrowserAnimationsModule,
     ModalModule.forRoot(),
     AppRoutingModule,
+    StoreModule.forRoot(reducers),
+    environment.production ? [] : StoreDevtoolsModule.instrument(),
+    EffectsModule.forRoot([ProductsEffects]),
   ],
-  providers: [PreloadService],
+  providers: [PreloadService, ProductsService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
 }
-
-// Module/Directive/Pipe/Service
-// NgModule => es6 module
-// declarations => let/const  // directive, pipe
-// imports = import;
-// exports = export;  directive, pipe , module

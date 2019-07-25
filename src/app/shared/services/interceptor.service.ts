@@ -18,7 +18,8 @@ export class InterceptorService implements HttpInterceptor {
   public intercept<T extends IRes>(req: HttpRequest<T>, next: HttpHandler): Observable<HttpEvent<T>> {
     const headers: HttpHeaders = req.headers
       .append('Content-Type', 'application/json')
-      .append('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imlnb3IiLCJpYXQiOjE1NjM0NTYyODl9.hxDtApKLT4gZIQCldGAbVCrk0YgVudADE4HQAxZd7v4');
+      // tslint:disable-next-line:max-line-length
+      .append('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN0cmluZyIsImlhdCI6MTU2NDA2NzI5Nn0.Lbt6gPJkYV5IWRyh67TjP6-Z8CquNvP04uVyAHEl82g');
     const jsonReq: HttpRequest<T> = req.clone({
       headers,
       url: `${this._baseUrl}${req.url}`,
@@ -33,9 +34,6 @@ export class InterceptorService implements HttpInterceptor {
   }
 
   private _isHttpResponse(event: HttpEvent<any>): event is HttpResponse<IRes> {
-    if (event instanceof HttpResponse) {
-      return true;
-    }
-    return false;
+    return event instanceof HttpResponse;
   }
 }

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { IProduct } from "../../../../../../mock";
+
+import { IProduct } from '../../../../../../store/reducers/products.reducer';
 
 @Component({
   selector: 'app-card-confirm-modal',
@@ -12,7 +13,5 @@ export class CardConfirmModalComponent {
   @Input()
   public product: IProduct;
 
-  public constructor() {
-  }
 
 }

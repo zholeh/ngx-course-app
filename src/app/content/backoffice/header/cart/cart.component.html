@@ -1,0 +1,15 @@
+<div class="cart-wrapper">
+  <h2>Order</h2>
+  <app-product
+    *ngFor="let product of products$ | async"
+    [product]="product"
+    (remove)="removeProduct($event)"
+    (increment)="incrementProduct($event)"
+    (decrement)="decrementProduct($event)"
+
+  ></app-product>
+  <div class="cart-footer">
+    <p>Total</p>
+    <p>{{totalPrice$ | async}}</p>
+  </div>
+</div>

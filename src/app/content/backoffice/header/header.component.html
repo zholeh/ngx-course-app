@@ -7,9 +7,9 @@
 
   <span class="fill-remaining-space"></span>
   <app-exchange-rates [rates]="rates"></app-exchange-rates>
-  <button mat-icon-button>
+  <button mat-icon-button [matMenuTriggerFor]="cart">
     <mat-icon
-      matBadge='{{1}}' [matBadgeHidden]="!1"   matBadgeColor="warn">shopping_cart</mat-icon>
+      matBadge='{{totalCount$ | async}}' [matBadgeHidden]="false"   matBadgeColor="warn">shopping_cart</mat-icon>
   </button>
   <button mat-icon-button [matMenuTriggerFor]="menu">
     <mat-icon>person</mat-icon>
@@ -25,3 +25,6 @@
     </button>
   </mat-menu>
 </mat-toolbar>
+<mat-menu #cart="matMenu">
+  <app-cart></app-cart>
+</mat-menu>

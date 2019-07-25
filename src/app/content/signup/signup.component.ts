@@ -9,6 +9,5 @@ export class SignupComponent {
 
   public signup(value: any): void {
     const {password: passwordGroup, ...user} = value;
-    console.log(passwordGroup, user);
   }
 }

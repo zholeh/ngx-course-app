@@ -1,27 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material';
 import { Observable } from 'rxjs';
-import { IProduct, products$ } from '../../../../mock';
-import { ProductsService } from './products.service';
+import { Store } from '@ngrx/store';
+import { IStore } from '../../../../store';
+import { GetProductsPending } from '../../../../store/actions/products.actions';
+import { IProduct } from '../../../../store/reducers/products.reducer';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css'],
 })
-export class ProductsComponent {
+export class ProductsComponent implements OnInit {
   public searchTerm: string = '';
   public onlyFavorites: boolean = false;
   public products$: Observable<IProduct[]>;
 
   public constructor(
-    private _productsService: ProductsService
-  ) {
-
-  }
+    private store: Store<IStore>
+  ) { }
 
   public ngOnInit(): void {
-    this.products$ = this._productsService.getProducts();
+    this.products$ = this.store.select('products');
+    this.store.dispatch(new GetProductsPending());
   }
 
   public trackByFn(index: number, item: IProduct): number {
@@ -29,7 +30,6 @@ export class ProductsComponent {
   }
 
   public toggleOnlyFavorites(e: MatCheckboxChange): void {
-    console.log(e);
     this.onlyFavorites = e.checked;
   }
 }

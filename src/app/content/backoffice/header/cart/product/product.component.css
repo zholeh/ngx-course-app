@@ -1,0 +1,23 @@
+.increment {
+  display: flex;
+  align-items: center;
+  padding-right: 10px;
+}
+
+.product {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 20px;
+  align-items: center;
+}
+
+
+img {
+  height: 50px;
+  width: 50px;
+  padding-right: 20px;
+}
+
+mat-icon {
+  cursor: pointer;
+}
