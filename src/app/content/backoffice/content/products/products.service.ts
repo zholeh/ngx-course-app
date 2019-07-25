@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
-import { IProduct } from '../../mock';
 import { HttpClient } from '@angular/common/http';
+import { IProduct } from '../../../../mock';
 
 export class ProductsService {
 

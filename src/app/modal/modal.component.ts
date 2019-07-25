@@ -42,12 +42,12 @@ export class ModalComponent implements OnInit {
         this.isOpen = true;
         // this.childComponent = resolver.resolveComponentFactory(component);
         // this.component = component;
-        this.childComponent = this._cfr.resolveComponentFactory(component);
+        this.childComponent = resolver.resolveComponentFactory(component);
         // this.refInjector = Injector.create({
         //   providers: [{provide: component, useValue: component}],
         //   parent: injector,
         // });
-        this.modalContext = this.modal.createComponent(this.childComponent);
+        this.modalContext = this.modal.createComponent(this.childComponent, 0);
         Object.keys(context).forEach(
           (key: string) => (this.modalContext.instance[key] = context[key])
         );

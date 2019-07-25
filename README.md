@@ -32,7 +32,6 @@
    - hidden directive`(done)`
 
 #### Dependency Injection
-4) Path in tsconfig.json `(done)`
 4) Service injection 
     - useFactory, useExisting
     - @Optional @Self @Host @SkipSelf  `(done)`
@@ -42,7 +41,9 @@
 4) Modal component
     - Modal Service `(done)`
     - componentResolveFactory + ViewContainerRef `(done)`
+    - ngComponentOutlet 
     - ng-component ???
+4) Path in tsconfig.json `(done)`    
 
 #### Router module
    - guards 

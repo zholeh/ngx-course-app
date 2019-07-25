@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material';
 import { Observable } from 'rxjs';
-import { IProduct, products$ } from '../../mock';
+import { IProduct, products$ } from '../../../../mock';
 import { ProductsService } from './products.service';
 
 @Component({
@@ -21,7 +21,7 @@ export class ProductsComponent {
   }
 
   public ngOnInit(): void {
-   this.products$ = this._productsService.getProducts();
+    this.products$ = this._productsService.getProducts();
   }
 
   public trackByFn(index: number, item: IProduct): number {
