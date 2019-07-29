@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatSidenav } from '@angular/material';
 
 @Component({
@@ -9,7 +9,7 @@ import { MatSidenav } from '@angular/material';
 export class BackofficeComponent  {
 
   public title: string = 'ng060619';
-  public drawer: MatSidenav;
+  public drawer!: MatSidenav;
 
   public setSidenav(drawer: MatSidenav): void {
     Promise.resolve().then(() => this.drawer = drawer);

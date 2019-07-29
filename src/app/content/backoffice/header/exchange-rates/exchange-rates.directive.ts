@@ -15,11 +15,11 @@ export class ExchangeRatesDirective implements OnInit {
   }
 
   @Input('appExchangeRatesFrom')
-  public rates: any[];
+  public rates!: { value: number, currency: string }[];
 
 
   @Input('appExchangeRatesAutoplay')
-  set playAuto(mode: 'on' | 'off') {
+  public set playAuto(mode: 'on' | 'off') {
     if (!mode) {
       return;
     }
@@ -27,21 +27,21 @@ export class ExchangeRatesDirective implements OnInit {
   }
 
   public context: any | null = null;
-  public index = 0;
+  public index: number = 0;
 
-  public ms = 2000;
-  public autoplay = 'on';
+  public ms: number = 2000;
+  public autoplay: 'off' | 'on' = 'on';
 
-  private intervalID: number | null;
+  private intervalID!: number | null;
 
-  constructor(
+  public constructor(
     private tpl: TemplateRef<any>,
     private vcr: ViewContainerRef
   ) {
   }
 
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.context = {
       $implicit: this.rates[0],
       controller: {
@@ -55,7 +55,7 @@ export class ExchangeRatesDirective implements OnInit {
   }
 
 
-  next() {
+  public next(): void {
     this.resetInterval();
     this.index++;
     if (this.index >= this.rates.length) {
@@ -64,7 +64,7 @@ export class ExchangeRatesDirective implements OnInit {
     this.context.$implicit = this.rates[this.index];
   }
 
-  prev() {
+  public prev(): void {
     this.resetInterval();
     this.index--;
     if (this.index < 0) {

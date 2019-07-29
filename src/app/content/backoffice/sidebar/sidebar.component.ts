@@ -9,12 +9,12 @@ import { MatSidenav } from '@angular/material';
 export class SidebarComponent implements OnInit {
 
   @Output()
-  public setSidenavControl = new EventEmitter();
+  public setSidenavControl: EventEmitter<MatSidenav> = new EventEmitter();
 
   @ViewChild('drawer', {static: true})
-  public drawer: MatSidenav;
+  public drawer!: MatSidenav;
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.setSidenavControl.emit(this.drawer);
   }
 

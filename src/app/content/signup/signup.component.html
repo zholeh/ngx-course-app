@@ -1,50 +1,51 @@
 <div class="signup-content">
   <mat-card>
     <mat-card-content>
-      <form (submit)="signup(f.value)" #f="ngForm">
+      <form [formGroup]="signupForm" (submit)="signup(signupForm.value)">
         <p>Sign up for continue</p>
         <mat-form-field class="full-width">
           <input
             matInput
             placeholder="User name"
-            name="username"
-            ngModel
-            required
-            appUsernameValidator
-            usernameUniqValidator
-            #c="ngModel"
+            [formControl]="signupForm.get('username')"
           />
-          <mat-error *ngIf="c.errors">
-            <span *ngFor="let error of c.errors | keyvalue">{{ error.key }}</span></mat-error
-          >
         </mat-form-field>
-        <mat-form-field class="full-width">
-          <input matInput placeholder="Email" name="email" ngModel required />
-        </mat-form-field>
-        <div ngModelGroup="password" appEqualValidator #p="ngModelGroup">
-          <mat-error *ngIf="p.errors">
-            <span *ngFor="let error of p.errors | keyvalue">{{ error.key }}</span></mat-error
-          >
+        <div fxLayout="column">
+          <div  fxLayout="row" *ngFor="let c of getControls(signupForm, 'emails') as controls; index as i; first as f" fxFlex="90">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Email" [formControl]="c"/>
+            </mat-form-field>
+            <div fxFlex="10"  fxLayout="row" >
+              <mat-icon (click)="addEmail()" *ngIf="f">add</mat-icon>
+              <mat-icon  *ngIf="controls.length > 1" (click)="removeEmail(i)">delete</mat-icon>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="full-width male_control">
+          <span>Male</span>
+          <app-switcher formControlName="male"></app-switcher>
+        </div>
+        <!--        <div ngModelGroup="password" appEqualValidator #p="ngModelGroup">-->
+        <div formGroupName="password">
+          <!--          <mat-error *ngIf="p.errors">-->
+          <!--            <span *ngFor="let error of p.errors | keyvalue">{{ error.key }}</span></mat-error-->
+          <!--          >-->
           <mat-form-field class="full-width">
             <input
               matInput
-              placeholder="Password"
-              name="password"
-              ngModel
               type="password"
-              required
-              minlength="5"
+              placeholder="Password"
+              formControlName="password"
             />
           </mat-form-field>
           <mat-form-field class="full-width">
             <input
               matInput
-              placeholder="Confirm password"
-              name="cpassword"
-              ngModel
               type="password"
-              required
-              minlength="5"
+              placeholder="Confirm password"
+              formControlName="cpassword"
             />
           </mat-form-field>
         </div>
@@ -52,7 +53,7 @@
           mat-raised-button
           color="primary"
           type="submit"
-          [disabled]="f.invalid || f.pending || f.pristine"
+          [disabled]="signupForm.invalid || signupForm.pending || signupForm.pristine"
         >
           Sign up
         </button>

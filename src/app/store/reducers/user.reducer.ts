@@ -1,15 +1,47 @@
-import { Action } from '@ngrx/store';
+import { UserActions } from '../actions/user.action';
+
+export type IAddress = {
+    street: string;
+    city: string;
+    state: string;
+    zip: string;
+};
 
 export interface IUser {
     name: string;
-    bonuses: number;
+    surname: string;
+    accessToken?: string;
+    createdAt?: Date;
+    email?: string;
+    username?: string;
+    _id?: string;
+    address?: IAddress[];
+    gender: boolean;
 }
 
-const initialState: IUser = {
-    name: 'Igor',
-    bonuses: 0.8,
+export const initialState: IUser = {
+    name: '',
+    surname: '',
+    username: '',
+    email: '',
+    accessToken: '',
+    createdAt: new Date(),
+    _id: '',
+    gender: false,
+    address: [],
 };
 
-export function userReducer(state: IUser = initialState, action: Action): IUser {
-    return state;
+// tslint:disable-next-line: no-any
+export function userReducer(state: IUser = initialState, action: any): IUser {
+    switch (action.type) {
+        case UserActions.SET_USER: {
+            return {
+                ...state,
+                ...action.payload,
+            };
+        }
+        default: {
+            return state;
+        }
+    }
 }

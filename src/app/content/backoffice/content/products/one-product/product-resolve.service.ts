@@ -3,7 +3,7 @@ import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@a
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
-import { IProduct } from '../../../../../mock';
+import { IProduct } from "@store/reducers/products.reducer";
 
 
 @Injectable()
@@ -15,8 +15,8 @@ export class ProductResolveService implements Resolve<IProduct | null> {
   ) {
   }
 
-  public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IProduct | null> {
-    return this._http.get(`/products/${route.paramMap.get('id')}`)
+  public resolve(route: ActivatedRouteSnapshot, _state: RouterStateSnapshot): Observable<IProduct | null> {
+    return this._http.get<IProduct>(`/products/${route.paramMap.get('id')}`)
       .pipe(
         map((product: IProduct | null) => {
           if (!product) {
@@ -25,7 +25,7 @@ export class ProductResolveService implements Resolve<IProduct | null> {
           }
           return product;
         }),
-        catchError((_err) => {
+        catchError(() => {
           this._router.navigate(['/backoffice']);
           return of(null);
         })

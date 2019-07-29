@@ -1,19 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-exchange-rates',
   templateUrl: './exchange-rates.component.html',
   styleUrls: ['./exchange-rates.component.css']
 })
-export class ExchangeRatesComponent implements OnInit {
+export class ExchangeRatesComponent {
 
   @Input()
-  public rates;
-
-  constructor() {
-  }
-
-  ngOnInit() {
-  }
+  public rates!: { value: number, currency: string };
 
 }

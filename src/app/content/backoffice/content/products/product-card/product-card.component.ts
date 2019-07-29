@@ -1,10 +1,10 @@
 import { Component, ComponentFactoryResolver, Injector, Input } from '@angular/core';
 import { CardConfirmModalComponent } from './card-confirm-modal/card-confirm-modal.component';
-import { ModalService } from "@modal/modal.service";
-import { AddProductToCart } from '../../../../../store/actions/cart.actions';
+import { ModalService } from '@modal/modal.service';
+import { AddProductToCart } from '@store/actions/cart.actions';
 import { Store } from '@ngrx/store';
-import { IStore } from '../../../../../store';
-import { IProduct } from '../../../../../store/reducers/products.reducer';
+import { IStore } from '@store/index';
+import { IProduct } from '@store/reducers/products.reducer';
 
 @Component({
   selector: 'app-product-card',
@@ -14,10 +14,10 @@ import { IProduct } from '../../../../../store/reducers/products.reducer';
 export class ProductCardComponent {
 
   @Input()
-  public product: IProduct;
+  public product!: IProduct;
 
   @Input()
-  public isOdd: boolean;
+  public isOdd!: boolean;
 
   public constructor(
     private _modalService: ModalService,

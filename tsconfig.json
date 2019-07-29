@@ -10,13 +10,33 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es2015",
+    "target": "esnext",
     "typeRoots": [
       "node_modules/@types"
     ],
-    "lib": [
-      "es2018",
-      "dom"
-    ]
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "incremental": true,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "paths": {
+      "@store/*": [
+        "src/app/store/*"
+      ],
+      "@shared/*": [
+        "src/app/shared/*"
+      ],
+      "@modal/*": [
+        "src/app/modal/*"
+      ],
+      "@env/*": [
+        "src/environments/*"
+      ]
+    }
   }
+//  "angularCompilerOptions": {
+//    "enableIvy": true
+//  }
 }

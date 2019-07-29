@@ -1,6 +1,8 @@
 #### CLI, NgModules, Component, Template syntax, binding
 0) CLI structure 
    - `(done)`
+   - custom webpack config
+   - change output html
 1) NgModel, Components 
    - interpolation `(done)`
    - safe ?. `(done)`
@@ -52,7 +54,7 @@
    - lazy loading
 
 #### Forms module 
-   - login / signup template driven form
+   - login / signup template driven form 
    - sync/async validators directives
    - profile edit reactive forms
    - address dynamic form (FormArray)

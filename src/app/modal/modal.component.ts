@@ -1,7 +1,6 @@
 import {
   Component,
   ComponentFactory,
-  ComponentFactoryResolver,
   ComponentRef,
   HostListener,
   Injector,
@@ -28,13 +27,13 @@ export class ModalComponent implements OnInit {
 
   public constructor(
     private _modalService: ModalService,
-    private _cfr: ComponentFactoryResolver
+    // private _cfr: ComponentFactoryResolver
   ) {
   }
 
   public ngOnInit(): void {
     this._modalService.modalSequence$.subscribe(
-      ({component, resolver, injector, context}) => {
+      ({component, resolver, context}: any) => {
         if (!component) {
           this.close();
           return;

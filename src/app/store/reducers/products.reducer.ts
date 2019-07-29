@@ -9,6 +9,7 @@ export interface IProduct {
     img: string;
     price: number;
     author: string;
+    isFavorite: boolean;
 }
 
 const initialState: IProduct[] = [];

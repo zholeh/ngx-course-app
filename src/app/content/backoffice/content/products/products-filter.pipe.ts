@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { IProduct } from '../../../../mock';
+import { IProduct } from '@store/reducers/products.reducer';
 
 @Pipe({
   name: 'productsFilter',
@@ -8,7 +8,7 @@ import { IProduct } from '../../../../mock';
 export class ProductsFilterPipe implements PipeTransform {
 
   public transform(products: IProduct[], searchTerm: string, onlyFavorites: boolean = false): IProduct[] {
-    const result = products;
+    const result: IProduct[] = products;
     if (onlyFavorites) {
       return result.filter((product: IProduct) => product.isFavorite === onlyFavorites);
     }

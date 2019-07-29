@@ -1,19 +1,19 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import {
   ICartProduct,
-  productsWithBonuses,
+  selectAll,
   totalPrice,
   trueProductsCount,
-} from '../../../../store/reducers/cart.reducer';
-import { IStore } from '../../../../store';
+} from '@store/reducers/cart.reducer';
+import { IStore } from '@store/index';
 import {
   DecrementProductInCart,
   IncrementProductInCart,
   RemoveProductFromCart,
-} from '../../../../store/actions/cart.actions';
-import { IProduct } from "../../../../store/reducers/products.reducer";
+} from '@store/actions/cart.actions';
+import { IProduct } from '@store/reducers/products.reducer';
 
 @Component({
   selector: 'app-cart',
@@ -31,7 +31,7 @@ export class CartComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.products$ = this.store.select(productsWithBonuses);
+    this.products$ = this.store.select(selectAll);
     this.totalPrice$ = this.store.select(totalPrice);
     this.totalCount$ = this.store.select(trueProductsCount);
 
@@ -48,7 +48,7 @@ export class CartComponent implements OnInit {
   public decrementProduct(product: ICartProduct): void {
     this.store.dispatch(new DecrementProductInCart(product));
   }
-  public trackByFn(index: number, item: IProduct): number {
+  public trackByFn(_index: number, item: IProduct): number {
     return item._id;
   }
 }

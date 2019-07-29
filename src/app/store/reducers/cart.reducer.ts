@@ -12,7 +12,7 @@ import { IStore } from '../index';
 import { IUser } from './user.reducer';
 
 export interface ICartProduct extends IProduct {
-    count: number;
+  count: number;
 }
 
 export const adapter: EntityAdapter<ICartProduct> = createEntityAdapter({
@@ -21,11 +21,11 @@ export const adapter: EntityAdapter<ICartProduct> = createEntityAdapter({
 const initialState: EntityState<ICartProduct> = adapter.getInitialState([]);
 
 export function cartReducer(
-    state: EntityState<ICartProduct> = initialState,
-    actions: CartProductsActions
+  state: EntityState<ICartProduct> = initialState,
+  actions: CartProductsActions
 ): EntityState<ICartProduct> {
   if (actions instanceof AddProductToCart) {
-    const entity: ICartProduct = state.entities[actions.payload._id];
+    const entity: ICartProduct | undefined = state.entities[actions.payload._id];
     return adapter.upsertOne(
       {
         ...actions.payload,
@@ -41,7 +41,7 @@ export function cartReducer(
     return adapter.updateOne(
       {
         id: actions.payload._id,
-        changes: { count: actions.payload.count + 1 },
+        changes: {count: actions.payload.count + 1},
       },
       state
     );
@@ -50,7 +50,7 @@ export function cartReducer(
     return adapter.updateOne(
       {
         id: actions.payload._id,
-        changes: { count: actions.payload.count - 1 },
+        changes: {count: actions.payload.count - 1},
       },
       state
     );
@@ -59,35 +59,37 @@ export function cartReducer(
 
 }
 
-export const { selectAll } = adapter.getSelectors(createFeatureSelector('cart'));
+export const {selectAll} = adapter.getSelectors(createFeatureSelector('cart'));
 export const userSelector: Selector<IStore, IUser> = (state: IStore) => state.user;
-export const productsWithBonuses: MemoizedSelector<IStore, ICartProduct[]> = createSelector(
-    userSelector,
-    selectAll,
-    (user: IUser, products: ICartProduct[]) => {
-        return products.map((product: ICartProduct) => {
-            return {
-                ...product,
-                price: product.price * user.bonuses,
-            };
-        });
-    }
-);
 
 export const trueProductsCount: MemoizedSelector<IStore, number> = createSelector(
-    productsWithBonuses,
-    (products: ICartProduct[]) => {
-        return products.reduce((count: number, product: ICartProduct) => {
-            return (count += product.count);
-        }, 0);
-    }
+  selectAll,
+  (products: ICartProduct[]) => {
+    return products.reduce((count: number, product: ICartProduct) => {
+      return (count += product.count);
+    }, 0);
+  }
 );
 
 export const totalPrice: MemoizedSelector<IStore, number> = createSelector(
-    productsWithBonuses,
-    (products: ICartProduct[]) => {
-        return products.reduce((price: number, product: ICartProduct) => {
-            return (price += product.price * product.count);
-        }, 0);
-    }
+  selectAll,
+  (products: ICartProduct[]) => {
+    return products.reduce((price: number, product: ICartProduct) => {
+      return (price += product.price * product.count);
+    }, 0);
+  }
 );
+
+
+// export const productsWithBonuses: MemoizedSelector<IStore, ICartProduct[]> = createSelector(
+//     userSelector,
+//     selectAll,
+//     (user: IUser, products: ICartProduct[]) => {
+//         return products.map((product: ICartProduct) => {
+//             return {
+//                 ...product,
+//                 price: product.price * user.bonuses,
+//             };
+//         });
+//     }
+// );

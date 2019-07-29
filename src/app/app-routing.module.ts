@@ -1,7 +1,7 @@
-import { AuthGuardService } from './auth-guard.service';
+import { AuthGuardService } from '@shared/services/auth-guard.service';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PreloadService } from './preload.service';
+import { PreloadService } from '@shared/services/preload.service';
 
 const routes: Routes = [
   {
@@ -32,8 +32,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {preloadingStrategy: PreloadService})],
-  exports: [RouterModule],
-  providers: [AuthGuardService]
+  exports: [RouterModule]
 })
 export class AppRoutingModule {
 }
