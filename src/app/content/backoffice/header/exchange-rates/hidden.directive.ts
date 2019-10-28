@@ -1,13 +1,13 @@
-import {  Directive, HostBinding } from '@angular/core';
+import { Directive, HostBinding } from '@angular/core';
 
 @Directive({
   selector: '[appHidden]',
   exportAs: 'hiddenControl'
 })
-export class HiddenDirective  {
+export class HiddenDirective {
 
   @HostBinding('style.visibility')
-  public visibility = 'hidden';
+  public visibility: 'visible' | 'hidden' = 'hidden';
 
   public show(): void {
     this.visibility = 'visible';

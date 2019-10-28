@@ -10,13 +10,18 @@ import { OneProductComponent } from './one-product/one-product.component';
 import { ProductResolveService } from './one-product/product-resolve.service';
 
 @NgModule({
-  declarations: [ProductsComponent, ProductCardComponent, ProductsFilterPipe, CardConfirmModalComponent, OneProductComponent],
+  declarations: [
+    ProductsComponent,
+    ProductCardComponent,
+    ProductsFilterPipe,
+    CardConfirmModalComponent,
+    OneProductComponent],
   imports: [
     ProductsRoutingModule,
     SharedModule
   ],
   entryComponents: [CardConfirmModalComponent],
-  providers: [   ProductResolveService],
+  providers: [ProductResolveService],
 })
 export class ProductsModule {
 }

@@ -1,16 +1,17 @@
 #### CLI, NgModules, Component, Template syntax, binding
 0) CLI structure 
    - `(done)`
-   - custom webpack config
+   - custom webpack config `(done)`
    - change output html
 1) NgModel, Components 
    - interpolation `(done)`
    - safe ?. `(done)`
    - binding `(done)`
+   - two way binding -> suffix Change
    - template ref `(done)`
 1) SideName component 
-    - projection (ng-content)  `(done)`
-    - @ViewChild @ContentChild ViewContainerRef for projection +  ngTemplateOutlet ng-container`(done)` 
+   - projection (ng-content)  `(done)`
+   - @ViewChild @ContentChild ViewContainerRef for projection +  ngTemplateOutlet ng-container`(done)` 
 2) Header component, 
    - style encapsulation @Input(), @Output() for drawer `(done)`
    - @Input(), @Output() for drawer `(done)`
@@ -25,9 +26,10 @@
 3) NgClass `(done)`
 3) Special directives 
   - ng-template `(done)`
-  - ng-container
+  - ng-container `(done)`
   - ngTemplateOutlet
-4) pure/impure pipe `(done)`
+4) pure/impure pipe
+  - products filter pipe `done`
 5) structural directive
    - exchange_rates component + exchange_rates directive `(done)`
 6) exportAs
@@ -37,6 +39,10 @@
 4) Service injection 
     - useFactory, useExisting
     - @Optional @Self @Host @SkipSelf  `(done)`
+       - @Optional in ng-content + viewProvider
+       - @Self in product-card
+       - @SkipSelf
+       - @Host in ng-content + provider
     - provider vs ViewProvider
 4) HttpClient
     - interceptor `(done)`

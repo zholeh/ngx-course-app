@@ -14,6 +14,7 @@ import {
   RemoveProductFromCart,
 } from '@store/actions/cart.actions';
 import { IProduct } from '@store/reducers/products.reducer';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-cart',
@@ -31,7 +32,7 @@ export class CartComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.products$ = this.store.select(selectAll);
+    this.products$ = this.store.select(selectAll).pipe(tap(() => console.log('data')));
     this.totalPrice$ = this.store.select(totalPrice);
     this.totalCount$ = this.store.select(trueProductsCount);
 
@@ -48,7 +49,8 @@ export class CartComponent implements OnInit {
   public decrementProduct(product: ICartProduct): void {
     this.store.dispatch(new DecrementProductInCart(product));
   }
-  public trackByFn(_index: number, item: IProduct): number {
+
+  public trackByFn(_index: number, item: IProduct): string {
     return item._id;
   }
 }

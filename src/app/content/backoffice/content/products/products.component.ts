@@ -25,7 +25,7 @@ export class ProductsComponent implements OnInit {
     this.store.dispatch(new GetProductsPending());
   }
 
-  public trackByFn(_index: number, item: IProduct): number {
+  public trackByFn(_index: number, item: IProduct): string {
     return item._id;
   }
 

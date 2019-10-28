@@ -4,8 +4,6 @@ import { Observable, Subject } from 'rxjs';
 @Injectable()
 export class ModalService {
   private _modalSequence$$: Subject<any> = new Subject();
-  public  constructor(){
-  }
 
   public open(componentObj: { component: any; resolver: any; injector: any; context: any }): void {
     this._modalSequence$$.next(componentObj);

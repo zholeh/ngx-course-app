@@ -4,7 +4,7 @@ import {
 } from '../actions/products.actions';
 
 export interface IProduct {
-    _id: number;
+    _id: string;
     title: string;
     img: string;
     price: number;

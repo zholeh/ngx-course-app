@@ -40,7 +40,6 @@ export class ProductCardComponent {
           this.store.dispatch(new AddProductToCart(product));
           this._modalService.close();
         },
-
         close: () => {
           this._modalService.close();
         }
